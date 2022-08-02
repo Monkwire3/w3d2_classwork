@@ -48,6 +48,13 @@ class Board
     def [](pos)
         @grid[pos[0]][pos[1]]
     end
+
+    def won?
+        @grid.each do |col|
+            col.each {|el| return false if !el.guessed_right}
+        end
+        return true
+    end
 end
 
 
