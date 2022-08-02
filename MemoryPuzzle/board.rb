@@ -55,6 +55,15 @@ class Board
         end
         return true
     end
+
+    def get_valid_positions
+        valid = []
+        @grid.each_with_index do |col, i_1|
+            col.each_with_index {|card, i_2| valid << [i_1, i_2] if !card.guessed_right}
+        end
+    return valid
+    end
+
 end
 
 

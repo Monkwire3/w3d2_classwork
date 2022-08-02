@@ -2,7 +2,7 @@ class ComputerPlayer
 
     def initialize
         @known_cards = Hash.new
-        @matched_cards = 
+        @matched_cards = []
     end
 
     def recieve_revealed_card(pos, value)
@@ -11,6 +11,9 @@ class ComputerPlayer
     end
 
     def receive_match(pos_1, pos_2)
-        matc      
+    end
+
+    def get_guess(valid)
+        return valid.sample
     end
 end

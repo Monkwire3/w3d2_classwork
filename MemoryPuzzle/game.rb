@@ -20,14 +20,14 @@ class Game
         system("clear")
         @board.refresh
         @board.print_board
-        guess = @current_player.get_guess
+        guess = @current_player.get_guess(@board.get_valid_positions)
         @board.guess(guess)
 
         system("clear")
         @board.print_board
         
         @prev_guess = guess
-        guess = @current_player.get_guess
+        guess = @current_player.get_guess(@board.get_valid_positions)
         @board.guess(guess)
         
         system("clear")
