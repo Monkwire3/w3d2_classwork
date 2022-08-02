@@ -2,6 +2,7 @@ require_relative 'card.rb'
 
 class Board
 
+    attr_accessor :grid
     def initialize(n=4)
         @grid = Array.new(n) { Array.new(n) }
         @size = n
@@ -31,13 +32,26 @@ class Board
 
     def refresh
         @grid.each do |sub_arr|
-            sub_arr.each  {|card| card.hide if !card.guessed}
+            sub_arr.each  {|card| card.hide if !card.guessed_right}
         end
+    end
+
+    def guess(pos)
+        @grid[pos[0]][pos[1]].reveal
+    end
+
+
+    def compare(pos1, pos2)
+        return @grid[pos1[0]][pos1[1]] == @grid[pos2[0]][pos2[1]]
+    end
+
+    def [](pos)
+        @grid[pos[0]][pos[1]]
     end
 end
 
 
 
-test_board = Board.new
-test_board.populate
-test_board.print_board
+# test_board = Board.new
+# test_board.populate
+# test_board.print_board
