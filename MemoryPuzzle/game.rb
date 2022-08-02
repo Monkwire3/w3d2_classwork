@@ -19,24 +19,26 @@ class Game
         end
     end
 
+
     def play_turn
         system("clear")
         @board.refresh
         @board.print_board
         guess = @current_player.get_guess(@board.get_valid_positions, @history)
         @board.guess(guess)
-        @history[@board[guess]] << guess
+        @history[@board[guess]] = guess
+        p @history
 
-        system("clear")
+        # system("clear")
         @board.print_board
         
         @prev_guess = guess
         guess = @current_player.get_guess(@board.get_valid_positions, @history)
         @board.guess(guess)
-        @history[@board[guess]] << guess
+        @history[@board[guess]] = guess
         
 
-        system("clear")
+        #system("clear")
         @board.print_board
         sleep(1)
        if @board.compare(@prev_guess, guess)
