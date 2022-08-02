@@ -8,9 +8,14 @@ class Board
     end
 
     def populate
+        card_values = []
+        numbers = (0...@size**2 / 2).to_a.concat((0...@size**2 / 2).to_a).shuffle
+        alpha = ('A'..'Z').to_a
+      
+
         @grid.each_with_index do |sub_arr, i_1|
             sub_arr.each_with_index do |el, i_2|
-                @grid[i_1][i_2] = Card.new
+                @grid[i_1][i_2] = Card.new(alpha[numbers.pop])
             end
         end
     end
@@ -26,9 +31,7 @@ class Board
 
     def refresh
         @grid.each do |sub_arr|
-            sub_arr.each do |card|
-                card.hide if !card.guessed
-            end
+            sub_arr.each  {|card| card.hide if !card.guessed}
         end
     end
 end

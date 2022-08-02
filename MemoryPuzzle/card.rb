@@ -6,9 +6,10 @@ class Card
 
     attr_reader :letter, :hidden
 
-    def initialize
-        @letter = ('A'..'Z').to_a[Card.generate_random_letter]
-        @hidden = true 
+    def initialize(letter)
+        # @letter = ('A'..'Z').to_a[Card.generate_random_letter]
+        @letter = letter
+        @hidden = false 
         @guessed = false
     end
 
