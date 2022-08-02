@@ -4,6 +4,7 @@ class Board
 
     def initialize(n=4)
         @grid = Array.new(n) { Array.new(n) }
+        @size = n
     end
 
     def populate
@@ -15,8 +16,19 @@ class Board
     end
 
     def print_board
+        puts "  " + (0...@size).to_a.join(" ")
         @grid.each_with_index do |sub_arr, i_1|
-            puts sub_arr.map {|el| el.letter }.join(" ")
+
+            puts String(i_1) + " " + sub_arr.map {|el| el.hidden ? " " : el.letter }.join(" ")
+        end
+
+    end
+
+    def refresh
+        @grid.each do |sub_arr|
+            sub_arr.each do |card|
+                card.hide if !card.guessed
+            end
         end
     end
 end

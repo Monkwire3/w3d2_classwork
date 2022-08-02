@@ -4,11 +4,12 @@ class Card
         return rand(0...26)
     end
 
-    attr_reader :letter
+    attr_reader :letter, :hidden
 
     def initialize
         @letter = ('A'..'Z').to_a[Card.generate_random_letter]
         @hidden = true 
+        @guessed = false
     end
 
     def hide
@@ -22,6 +23,7 @@ class Card
     def ==(card)
         return self.letter == card.letter
     end
+
 
 end
 
